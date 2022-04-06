@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 
 public class Q567One {
-    public boolean checkInclusion(String s1, String s2) {
+    public boolean checkInclusion1(String s1, String s2) {
         int n = s1.length(),m = s2.length();
         if(n>m){
             return false;
@@ -40,5 +40,37 @@ public class Q567One {
             }
         }
         return false;
+    }
+    public boolean checkInclusion(String s1, String s2) {
+        int length1 = s1.length(), length2 = s2.length();
+//      因为要统计每个字符的数量，所以使用大小为26的数组
+        int[] ints1 = new int[26];
+        int[] ints2 = new int[26];
+//      统计答案字符串的字符数
+        for (int i = 0; i < length1; i++){
+            ints1[s1.charAt(i) - 'a']++;
+        }
+        int start = 0;
+//      遍历目标字符串，这里循环每次开始时窗口区间的长度一定小于等于答案字符串的长度
+        for (int end = 0; end < length2; end++){
+            ints2[s2.charAt(end) - 'a']++;
+//          当窗口区间长度大于答案字符串长度时就要右移左指针使之等于答案字符串的长度，因为题目要找子串
+            while (end - start + 1 > length1){
+                ints2[s2.charAt(start)-'a']--;
+                start++;
+            }
+//          当长度相等时就比较两个数组是否相等,相等就代表数组中各个字符数都相等就找到了那个子串
+            if (end - start + 1 == length1){
+                if (Arrays.equals(ints1,ints2))return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Q567One q567One = new Q567One();
+        String s1 = "ab";
+        String s2 = "eidbaooo";
+        q567One.checkInclusion1(s1,s2);
     }
 }
