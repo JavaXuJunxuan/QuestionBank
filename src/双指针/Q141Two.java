@@ -11,7 +11,7 @@ public class Q141Two {
 //        当快慢指针相等时表明快指针进入了循环，否则慢指针不可能追的上快指针
         while (slow != fast){
 //            只要出现空节点时说明一定没有环，因为有环一定不会出现空节点总会回到链表中
-//            判断fast.next可以避免18行代码出现空指针异常
+//            判断fast.next可以避免21行代码出现空指针异常
             if (fast == null || fast.next == null){
                 return false;
             }
