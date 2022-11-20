@@ -9,18 +9,34 @@ import java.util.List;
  */
 
 public class J06_1One {
-    List<ListNode> list = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
     public int[] reversePrint(ListNode head) {
        recur(head);
         int[] ints = new int[list.size()];
         for (int i = 0; i < list.size(); i++){
-            ints[i] = list.get(i).val;
+            ints[i] = list.get(i);
         }
         return ints;
     }
     void recur(ListNode head) {
         if (head == null) return;
         recur(head.next);
-        list.add(head);
+        list.add(head.val);
+    }
+//    递归法2
+    int num = 0 , i = 0;
+    int[] ints;
+    public int[] reversePrint1(ListNode head) {
+        huisu(head);
+        return ints;
+    }
+    void huisu(ListNode listNode){
+        if (listNode == null){
+            ints = new int[num];
+            return;
+        }
+        num++;
+        huisu(listNode.next);
+        ints[i++] = listNode.val;
     }
 }

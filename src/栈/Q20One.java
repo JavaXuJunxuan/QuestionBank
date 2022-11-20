@@ -1,9 +1,6 @@
 package 栈;
 
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 20. 有效的括号
@@ -14,7 +11,7 @@ import java.util.Map;
  */
 
 public class Q20One {
-    public static boolean isValid(String s) {
+    public static boolean isValid1(String s) {
 //        n是字符串的长度
         int n = s.length();
 //        if用来判断字符串中是否是偶数个字符
@@ -53,6 +50,27 @@ public class Q20One {
     }
     public static void main(String[] args) {
         String s = "()[]{}";
-        System.out.println(isValid(s));;
+        System.out.println(isValid1(s));;
+    }
+    public static boolean isValid2(String s) {
+        int length = s.length();
+        if (length % 2 != 0) return false;
+        if (length == 0) return true;
+        Stack<Character> stack = new Stack();
+        for (char c : s.toCharArray()){
+            if (c == '('){
+                stack.push(')');
+            }else if (c == '['){
+                stack.push(']');
+            }else if (c == '{'){
+                stack.push('}');
+            }else if (stack.empty() || c != stack.pop()){
+                return false;
+            }
+        }
+        if (stack.empty()){
+            return true;
+        }
+        return false;
     }
 }
