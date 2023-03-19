@@ -1,4 +1,7 @@
 package 数据结构;
+
+import java.util.PriorityQueue;
+
 //本二叉堆为最大堆，最小堆结构与其类似
 public class BinaryHeap<Key extends Comparable<Key>> {
     //存储元素的数组
@@ -8,7 +11,7 @@ public class BinaryHeap<Key extends Comparable<Key>> {
 
     public BinaryHeap(int cap){
         // 索引 0 不用，所以多分配一个空间
-        value = (Key[]) new Comparable[cap + 1];
+//        Integer value = (Key[]) new Comparable[cap + 1];
     }
 
     // 父节点的索引

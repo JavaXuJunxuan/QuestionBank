@@ -1,3 +1,5 @@
+package 数据结构;
+
 class Node<K,V>{
     K key;
     V value;
@@ -104,7 +106,6 @@ public class Heap {
         heap.insert(node5);
         heap.insert(node6);
         heap.insert(node7);
-
         System.out.println(heap.delMin());
         System.out.println(heap.delMin());
         System.out.println(heap.delMin());
